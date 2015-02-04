@@ -1,2 +1,2 @@
 # placenta
-Handy ruby library for &lt;TBD>
+Handy ruby library for tracking upcoming venues for the Northern Techno Alliance
