@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :username
       t.string :email
       t.string :password_digest
-      t.boolean :is_temporary
+      t.boolean :is_temporary, default: false
       t.integer :profile_id
 
       t.timestamps

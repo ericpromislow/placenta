@@ -20,4 +20,21 @@ ctionView::Template::Error: Webpacker can't find application.js in /Users/ericp/
 9.1. 
 ```
 I ended up finding a fix for my issue through this link: https://discuss.rubyonrails.org/t/pretty-astonishing/76850
+$ yarn remove @rails/webpacker
+$ rm -rf ./node_modules
+$ yarn add @rails/webpacker@^5.4.4
+^ didn't work
+$ yarn remove @rails/webpacker
+$ npm install --save-dev @rails/webpacker
+```
+
+That didn't work. Try this:
+```
+$ rake assets:precompile ->
+Cannot find package '@babel/plugin-proposal-private-methods' imported from /Users/ericp/lab/rails/cable05/gameapp/babel-virtual-resolve-base.js
+
+$ npm install --save-dev @babel/plugin-proposal-private-methods
+$ npm install --save-dev @babel/plugin-proposal-private-property-in-object
+$ yarn
+./bin/webpack-dev-server
 ```

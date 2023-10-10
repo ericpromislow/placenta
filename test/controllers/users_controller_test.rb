@@ -1,4 +1,5 @@
 require "test_helper"
+require 'faker'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -15,9 +16,21 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create user" do
-    assert_difference('User.count') do
+  test "should not create duplicate user" do
+    assert_difference('User.count', 0) do
       post users_url, params: { user: { email: @user.email, is_temporary: @user.is_temporary, password: 'secret', password_confirmation: 'secret', profile_id: @user.profile_id, username: @user.username } }
+    end
+
+    assert_response 422
+    assert_template 'new'
+  end
+
+  test "should create user" do
+    username = Faker::Name.name
+    email = Faker::Internet.email
+    password = Faker::Internet.password
+    assert_difference('User.count', 1) do
+      post users_url, params: { user: { email: email, password: password, password_confirmation: password, profile_id: @user.profile_id, username: username } }
     end
 
     assert_redirected_to user_url(User.last)

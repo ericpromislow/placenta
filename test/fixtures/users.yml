@@ -2,14 +2,14 @@
 
 one:
   username: MyString
-  email: MyString
+  email: MyString@winx.com
   password_digest: <%= BCrypt::Password.create('secret') %>
   is_temporary: false
   profile_id: 
 
 two:
-  username: MyString
-  email: MyString
+  username: MyString2
+  email: MyString2@winx.com
   password_digest: <%= BCrypt::Password.create('secret') %>
   is_temporary: false
   profile_id: 
