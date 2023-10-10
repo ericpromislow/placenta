@@ -22,6 +22,12 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
+  test "password too short" do
+    @user.password_confirmation = @user.password = '123'
+    assert_not @user.valid?
+    assert_includes @user.errors.full_messages, "Password is too short (minimum is 4 characters)"
+  end
+
   test "missing name" do
     u = User.new(username: "", email: "user@example.com",
       password: "foobar", password_confirmation: "foobar")
