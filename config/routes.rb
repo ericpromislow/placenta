@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root 'users#index'
+  # root 'users#index'
+  root 'static_pages#home'
+  get 'static_pages/about'
   get 'static_pages/home'
   get 'static_pages/help'
   resources :users

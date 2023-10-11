@@ -38,3 +38,8 @@ $ npm install --save-dev @babel/plugin-proposal-private-property-in-object
 $ yarn
 ./bin/webpack-dev-server
 ```
+
+10. Gemfile dependency problems?
+See https://github.com/learnenough/rails_tutorial_6th_edition_gemfiles/blob/master/sample_app/Gemfile
+
+
