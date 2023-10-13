@@ -58,4 +58,10 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to users_url
   end
+
+  # Stuff that isn't just generated
+  test "should set up a new user" do
+    get signup_path
+    assert_response :success
+  end
 end
