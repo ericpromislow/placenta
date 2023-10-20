@@ -15,7 +15,7 @@ What I did:
 9. rails test:
 - fails :
 ```
-ctionView::Template::Error: Webpacker can't find application.js in /Users/ericp/lab/rails/cable05/gameapp/public/packs-test/manifest.json. Possible causes:
+ActionView::Template::Error: Webpacker can't find application.js in /Users/ericp/lab/rails/cable05/gameapp/public/packs-test/manifest.json. Possible causes:
 ```
 9.1. 
 ```
@@ -36,10 +36,15 @@ Cannot find package '@babel/plugin-proposal-private-methods' imported from /User
 $ npm install --save-dev @babel/plugin-proposal-private-methods
 $ npm install --save-dev @babel/plugin-proposal-private-property-in-object
 $ yarn
-./bin/webpack-dev-server
+$ ./bin/webpack-dev-server
 ```
 
 10. Gemfile dependency problems?
 See https://github.com/learnenough/rails_tutorial_6th_edition_gemfiles/blob/master/sample_app/Gemfile
+
+11. Postgres fun and games
+
+> This disables the brain-dead postgres CLI, which clears the screen all the time
+PAGER= psql ...
 
 
