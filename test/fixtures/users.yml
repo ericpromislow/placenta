@@ -10,6 +10,6 @@ one:
 two:
   username: MyString2
   email: MyString2@winx.com
-  password_digest: <%= BCrypt::Password.create('secret') %>
+  password_digest: <%= BCrypt::Password.create('secret22') %>
   is_temporary: false
   profile_id: 

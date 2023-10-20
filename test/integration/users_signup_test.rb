@@ -32,7 +32,8 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     end
     follow_redirect!
     assert_template 'users/show'
-    assert_select '.alert-success', 'Welcome, charlie1'
+    # puts "QQQ: #{ response.body }"
+    assert_select 'p#notice', 'Welcome, charlie1'
   end
 
 end

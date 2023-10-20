@@ -47,4 +47,11 @@ See https://github.com/learnenough/rails_tutorial_6th_edition_gemfiles/blob/mast
 > This disables the brain-dead postgres CLI, which clears the screen all the time
 PAGER= psql ...
 
+12. How to fix the uninitialized constant warnings:
+Add the following to the gemfile:
+
+```
+gem "net-ftp", "~> 0.2.0", require: false
+gem "net-http"
+```
 
