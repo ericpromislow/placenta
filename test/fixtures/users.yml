@@ -1,15 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  username: MyString
-  email: MyString@winx.com
-  password_digest: <%= BCrypt::Password.create('secret') %>
+user1:
+  username: user1
+  email: user1@winx.com
+  password_digest: <%= User.digest('secret') %>
   is_temporary: false
   profile_id: 
 
-two:
-  username: MyString2
-  email: MyString2@winx.com
-  password_digest: <%= BCrypt::Password.create('secret22') %>
+user2:
+  username: user2
+  email: user2@winx.com
+  password_digest: <%= User.digest('secret') %>
   is_temporary: false
   profile_id: 
