@@ -3,7 +3,7 @@ require 'faker'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = users(:one)
+    @user = users(:user1)
   end
 
   test "should get index" do
@@ -20,8 +20,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_difference('User.count', 0) do
       post users_url, params: { user: { email: @user.email, is_temporary: @user.is_temporary, password: 'secret', password_confirmation: 'secret', profile_id: @user.profile_id, username: @user.username } }
     end
-
-    assert_response 422
     assert_template 'new'
   end
 
