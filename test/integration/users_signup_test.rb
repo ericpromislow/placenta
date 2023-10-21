@@ -15,8 +15,8 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     assert_select 'div#error_explanation .alert', 'The form contains 4 errors.'
     assert_select 'div#error_explanation ul li[1]', "Username can't be blank"
     assert_select 'div#error_explanation ul li[2]', "Email is invalid"
-    assert_select 'div#error_explanation ul li[3]', "Password is too short (minimum is 4 characters)"
-    assert_select 'div#error_explanation ul li[4]', "Password confirmation doesn't match Password"
+    assert_select 'div#error_explanation ul li[4]', "Password is too short (minimum is 4 characters)"
+    assert_select 'div#error_explanation ul li[3]', "Password confirmation doesn't match Password"
   end
 
   test "valid user info adds the user" do

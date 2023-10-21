@@ -111,4 +111,8 @@ class UserTest < ActiveSupport::TestCase
     assert_includes user.errors.full_messages, "Email has already been taken"
   end
 
+  test "authenticated? should return false for a user with nil digest" do
+    assert_not @user.authenticated?(nil)
+  end
+
 end

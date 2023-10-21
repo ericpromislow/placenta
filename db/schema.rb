@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_10_10_001800) do
+ActiveRecord::Schema.define(version: 2023_10_21_035034) do
 
   create_table "profiles", force: :cascade do |t|
     t.integer "theme"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2023_10_10_001800) do
     t.integer "profile_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "remember_digest"
     t.index ["username", "email"], name: "index_users_on_username_and_email"
   end
 
