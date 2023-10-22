@@ -45,6 +45,26 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", user_path(@user), count: 0
   end
 
+  test "can log in with username" do
+    # Can't do this because `session` isn't defined
+    # assert !is_logged_in?
+    get login_path
+    post login_path, params: { session: { email: @user.username, password: "secret" }}
+    assert is_logged_in?
+  end
+
+  test "can log in with username wrong case" do
+    get login_path
+    post login_path, params: { session: { email: @user.username.upcase, password: "secret" }}
+    assert is_logged_in?
+  end
+
+  test "can log in with email wrong case" do
+    get login_path
+    post login_path, params: { session: { email: @user.email.upcase, password: "secret" }}
+    assert is_logged_in?
+  end
+
   test "login with remembering" do
     log_in_as(@user, remember_me: '1')
     assert_not_nil cookies['remember_token']
