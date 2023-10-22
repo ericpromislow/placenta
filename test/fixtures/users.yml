@@ -7,6 +7,8 @@ user1:
   is_temporary: false
   profile_id:
   admin: true
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 user2:
   username: user2
@@ -14,11 +16,15 @@ user2:
   password_digest: <%= User.digest('secret') %>
   is_temporary: false
   profile_id:
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 archer:
   username: Sterling Archer
   email: duchess@example.gov
   password_digest: <%= User.digest('secret') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 <% 30.times do |n|
 n2 = n + 101 %>
@@ -26,4 +32,6 @@ user<%= n2 %>:
   username: <%= "User #{ n2 }" %>
   email: <%= "user-#{n2}@joe.com" %>
   password_digest: <%= User.digest('secret') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 <% end %>
