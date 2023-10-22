@@ -18,3 +18,11 @@ archer:
   username: Sterling Archer
   email: duchess@example.gov
   password_digest: <%= User.digest('secret') %>
+
+<% 30.times do |n|
+n2 = n + 101 %>
+user<%= n2 %>:
+  username: <%= "User #{ n2 }" %>
+  email: <%= "user-#{n2}@joe.com" %>
+  password_digest: <%= User.digest('secret') %>
+<% end %>

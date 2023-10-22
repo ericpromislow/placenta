@@ -29,6 +29,17 @@ textarea {
   }
 }
 
+ul.users {
+  list-style: none;
+  margin: 0;
+  li {
+    margin-bottom: 6px;
+    overflow: auto;
+    //padding: 6px 0;
+    border-bottom: 1px solid $gray-lighter;
+  }
+}
+
 /* typography */
 
 h1,h2, h3, h4, h5 h6 {

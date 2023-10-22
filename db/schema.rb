@@ -23,12 +23,13 @@ ActiveRecord::Schema.define(version: 2023_10_21_035034) do
     t.string "username"
     t.string "email"
     t.string "password_digest"
-    t.boolean "is_temporary"
+    t.boolean "is_temporary", default: false
     t.integer "profile_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "remember_digest"
-    t.index ["username", "email"], name: "index_users_on_username_and_email"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
 end
