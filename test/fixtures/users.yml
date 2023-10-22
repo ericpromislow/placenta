@@ -12,4 +12,9 @@ user2:
   email: user2@winx.com
   password_digest: <%= User.digest('secret') %>
   is_temporary: false
-  profile_id: 
+  profile_id:
+
+archer:
+  username: Sterling Archer
+  email: duchess@example.gov
+  password_digest: <%= User.digest('secret') %>

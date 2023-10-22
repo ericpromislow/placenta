@@ -7,7 +7,7 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 150 },
     format: { with: /.+@.+\.\w/ }, uniqueness: { case_sensitive: false }
   has_secure_password
-  validates :password, length: { minimum: 4 }
+  validates :password, length: { minimum: 4 }, allow_nil: true
 
   def do_before_save
     if self.is_temporary.nil?
