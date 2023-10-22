@@ -96,4 +96,16 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     assert_redirected_to @user
   end
+
+  test "non-admin user can't make themselves admin" do
+    @other_user = users(:archer)
+    assert_equal false, @other_user.admin
+    log_in_as(@other_user)
+    patch user_path(@other_user), params: { user: {admin: true }}
+    assert_redirected_to @other_user
+    follow_redirect!
+    assert_not flash.empty?
+    @other_user.reload
+    assert_equal false, @other_user.admin
+  end
 end

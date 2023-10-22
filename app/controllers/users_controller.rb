@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
+  # Does these before_actions in order of appearance here:
   before_action :set_user, only: %i[ show edit update destroy ]
   before_action :logged_in_user, only: %i[ index edit update destroy ]
+  before_action :allow_admins_only, only: %i[ destroy  ]
   before_action :correct_user, only: %i[ edit update  ]
 
   # GET /users or /users.json
@@ -53,6 +55,7 @@ class UsersController < ApplicationController
       flash[:success] = "User #{@user.username}  was successfully updated."
       redirect_to user_url(@user)
     else
+      flash[:error] = "User #{@user.username} not updated: #{ @user.errors.full_messages }"
       render 'edit'
     end
     # respond_to do |format|
@@ -68,12 +71,13 @@ class UsersController < ApplicationController
 
   # DELETE /users/1 or /users/1.json
   def destroy
-    @user.destroy
-
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
-      format.json { head :no_content }
+    if @user == current_user
+      flash[:error] = "User #{ @user.username } can't delete themselves"
+    else
+      @user.destroy
+      flash[:success] = "User #{ @user.username } is swimming with the fishes"
     end
+    redirect_to users_url
   end
 
   private
@@ -91,8 +95,8 @@ class UsersController < ApplicationController
   end
 
   # Only allow a list of trusted parameters through.
-  def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation, :is_temporary, :profile_id)
+  def  user_params
+    params.require(:user).permit(:username, :email, :password, :password_confirmation, :admin)
   end
 
   def updatable_params
@@ -105,5 +109,9 @@ class UsersController < ApplicationController
 
   def current_user?(user)
     user && user == current_user
+  end
+
+  def allow_admins_only
+    redirect_to(root_url) if !current_user&.admin
   end
 end

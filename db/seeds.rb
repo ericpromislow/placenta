@@ -2,6 +2,7 @@
 User.create!(username: "joe",
   email: "joe@joe.com",
   password:              "secret",
+  admin: true,
   password_confirmation: "secret")
 
 require 'faker'

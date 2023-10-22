@@ -5,7 +5,8 @@ user1:
   email: user1@winx.com
   password_digest: <%= User.digest('secret') %>
   is_temporary: false
-  profile_id: 
+  profile_id:
+  admin: true
 
 user2:
   username: user2

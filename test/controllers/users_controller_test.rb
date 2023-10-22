@@ -64,13 +64,35 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to user_url(@user)
   end
 
+  test "should require login to destroy a user" do
+    assert_difference('User.count', 0) do
+      delete user_url(@other_user)
+    end
+    assert_redirected_to login_url
+  end
+
   test "should destroy user" do
     log_in_as(@user)
     assert_difference('User.count', -1) do
+      delete user_url(@other_user)
+    end
+    assert_redirected_to users_url
+  end
+
+  test "should not destroy self" do
+    log_in_as(@user)
+    assert_difference('User.count', 0) do
       delete user_url(@user)
     end
-
     assert_redirected_to users_url
+  end
+
+  test "should not allow non-admin to destroy a user self" do
+    log_in_as(@other_user)
+    assert_difference('User.count', 0) do
+      delete user_url(@user)
+    end
+    assert_redirected_to root_url
   end
 
   # Stuff that isn't just generated
